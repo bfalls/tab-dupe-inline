@@ -1,0 +1,15 @@
+# OS files
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+
+# GIMP working files
+*.xcf
+
+# Build artifacts
+*.zip
+
+# Chrome extension noise
+*.crx
