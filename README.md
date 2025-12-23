@@ -1,10 +1,20 @@
+<p align="center">
+  <img src="assets/icon-128.png" alt="Tab Dupe Inline icon" width="128" height="128">
+</p>
+
 # Tab Dupe Inline
 
 Tab Dupe Inline is a lightweight Chrome/Brave extension that duplicates the current tab inline and automatically closes the original.
 
 This restores a behavior many users expect from “Duplicate Tab” but that Chromium browsers do not provide natively.
 
-Use this when ChatGPT UI starts to lock up after long discussions, the response is actually available but the UI won't respond. This extension gets you back working fast.
+## Why
+
+Some web apps become slow or unresponsive during long sessions, even though the content is ready for you, but the browser is locked and even Refresh is blocked.
+
+Tab Dupe Inline lets you instantly duplicate the current tab inline and close the original, effectively refreshing the page state without losing your place. This is especially useful for tools like ChatGPT, where long conversations can cause the UI to stall and block browser Refresh, while the response is already available.
+
+This extension gets you back working fast.
 
 ## Features
 
