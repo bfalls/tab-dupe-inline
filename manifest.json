@@ -26,7 +26,7 @@
     "dupe-inline": {
       "suggested_key": {
         "default": "Ctrl+Shift+D",
-        "mac": "Ctrl+Shift+D"
+        "mac": "Command+Shift+D"
       },
       "description": "Duplicate tab and close original"
     }

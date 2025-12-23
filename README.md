@@ -10,10 +10,16 @@ Use this when ChatGPT UI starts to lock up after long discussions, the response 
 
 - Duplicates the active tab
 - Automatically closes the original tab
-- Preserves tab order instead of sending duplicates to the end
+- Preserves tab order by relying on the browser’s inline duplicate behavior
 - Designed for keyboard-first workflows
 - No UI clutter, popups, or configuration required
 - No tracking, analytics, or data collection
+
+## Behavior Assumptions
+
+Tab Dupe Inline assumes the browser duplicates tabs **immediately next to the original tab**.
+
+This matches current behavior in Chrome and Brave. If a future browser version changes how tab duplication works, the extension may not behave as intended.
 
 ## Usage
 
@@ -22,6 +28,20 @@ Use this when ChatGPT UI starts to lock up after long discussions, the response 
 3. The original tab is closed automatically
 
 The keyboard shortcut can be customized in your browser’s extension shortcuts settings.
+
+## Keyboard Shortcut
+
+Tab Dupe Inline is designed to be used with a keyboard shortcut.
+
+To set or change the shortcut:
+
+1. Open `chrome://extensions/shortcuts`
+2. Find **Tab Dupe Inline**
+3. Assign a shortcut key
+
+Suggested shortcut:
+- Windows / Linux: **Ctrl+Shift+D**
+- macOS: **Command+Shift+D**
 
 ## Permissions
 

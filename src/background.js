@@ -1,8 +1,14 @@
-// Duplicate the active tab, then switch to the tab to the left (original) and close it.
-// The duplicate tab becomes active and is placed next to the original (typical Chromium behavior).
+// Duplicate the active tab, then close the tab to the left (assumed original).
+// Note: relying on "left tab is original" can be brittle; see comment below.
 
-chrome.action.onClicked.addListener(async (tab) => {
+chrome.commands.onCommand.addListener(async (command) => {
+  if (command !== "dupe-inline") return;
+
   try {
+    const [tab] = await chrome.tabs.query({
+      active: true,
+      currentWindow: true,
+    });
     if (!tab || typeof tab.id !== "number") return;
 
     const originalId = tab.id;
@@ -11,7 +17,10 @@ chrome.action.onClicked.addListener(async (tab) => {
     await chrome.tabs.duplicate(originalId);
 
     // Get the now-active tab in the same window (should be the duplicate).
-    const [activeNow] = await chrome.tabs.query({ active: true, currentWindow: true });
+    const [activeNow] = await chrome.tabs.query({
+      active: true,
+      currentWindow: true,
+    });
     if (!activeNow || typeof activeNow.index !== "number") return;
 
     // Move to the tab immediately to the left of the currently active tab.
@@ -19,15 +28,12 @@ chrome.action.onClicked.addListener(async (tab) => {
     if (leftIndex < 0) return;
 
     const tabs = await chrome.tabs.query({ currentWindow: true });
-    const leftTab = tabs.find(t => t.index === leftIndex);
+    const leftTab = tabs.find((t) => t.index === leftIndex);
     if (!leftTab || typeof leftTab.id !== "number") return;
 
-    // Activate the left tab (original), then close it.
-    await chrome.tabs.update(leftTab.id, { active: true });
+    // Close the left tab (assumed original).
     await chrome.tabs.remove(leftTab.id);
-
-    // Nothing left to do, the duplicated tab to the right is now active.
   } catch (err) {
-    console.error("Duplicate+CloseLeft failed:", err);
+    console.error("dupe-inline failed:", err);
   }
 });
