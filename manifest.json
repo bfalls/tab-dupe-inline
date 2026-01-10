@@ -21,12 +21,11 @@
   "background": {
     "service_worker": "src/background.js"
   },
-  "permissions": ["tabs"],
   "commands": {
     "dupe-inline": {
       "suggested_key": {
-        "default": "Ctrl+Shift+D",
-        "mac": "Command+Shift+D"
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
       },
       "description": "Duplicate tab and close original"
     }
